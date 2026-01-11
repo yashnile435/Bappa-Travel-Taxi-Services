@@ -1,0 +1,397 @@
+/* Professional Manage Users Styles */
+.pro-manage-users {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pro-manage-users-header {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2d3a4a;
+  margin: 0 0 24px 0;
+  padding: 32px 32px 0 32px;
+  letter-spacing: 0.5px;
+}
+.pro-manage-users-table-wrapper {
+  flex: 1;
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0001;
+  margin: 0 auto;
+  padding: 0 32px 32px 32px;
+  min-height: 400px;
+}
+.pro-manage-users-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 900px;
+  background: #fff;
+  font-size: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pro-manage-users-table thead th {
+  background: #f0f4f8;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 16px 10px;
+  border-bottom: 2px solid #e0e6ed;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: left;
+}
+.pro-manage-users-table tbody tr {
+  transition: background 0.2s;
+}
+.pro-manage-users-table tbody tr:hover {
+  background: #f6fafd;
+}
+.pro-manage-users-table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.pro-user-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e0e6ed;
+  color: #2d3a4a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 10px;
+  box-shadow: 0 1px 4px #0001;
+}
+.pro-user-avatar[data-admin="true"] {
+  background: #ff6b35;
+  color: #fff;
+}
+.pro-user-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+.pro-main-admin-badge {
+  background: #2d3a4a;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  letter-spacing: 0.5px;
+}
+.pro-role-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: #e0e6ed;
+  color: #2d3a4a;
+}
+.pro-role-badge.admin {
+  background: #ff6b35;
+  color: #fff;
+}
+.pro-role-badge.user {
+  background: #e0e6ed;
+  color: #2d3a4a;
+}
+.pro-login-method {
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #e0e6ed;
+  color: #2d3a4a;
+}
+.pro-login-method.google {
+  background: #e8f0fe;
+  color: #4285f4;
+}
+.pro-login-method.manual {
+  background: #e0f7e9;
+  color: #388e3c;
+}
+.pro-action-btn {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px #0001;
+}
+.pro-action-btn.promote {
+  background: #388e3c;
+  color: #fff;
+}
+.pro-action-btn.promote:disabled {
+  background: #b7e1c6;
+  color: #fff;
+  cursor: not-allowed;
+}
+.pro-action-btn.delete {
+  background: #d32f2f;
+  color: #fff;
+}
+.pro-action-btn.delete:disabled {
+  background: #f7bdbd;
+  color: #fff;
+  cursor: not-allowed;
+}
+.pro-manage-users-loading,
+.pro-manage-users-empty {
+  color: #888;
+  font-size: 1.1rem;
+  padding: 32px 0;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .pro-manage-users-header {
+    font-size: 1.3rem;
+    padding: 24px 12px 0 12px;
+  }
+  .pro-manage-users-table-wrapper {
+    padding: 0 8px 16px 8px;
+    min-width: 0;
+  }
+  .pro-manage-users-table {
+    min-width: 600px;
+    font-size: 0.95rem;
+  }
+  .pro-user-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .pro-manage-users-table {
+    display: none;
+  }
+  .pro-users-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 4px 16px 4px;
+  }
+  .pro-user-mobile-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0001;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pro-user-mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .pro-user-mobile-info {
+    font-size: 0.98rem;
+    color: #333;
+    margin-bottom: 2px;
+    word-break: break-all;
+  }
+  .pro-user-mobile-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .pro-action-btn {
+    flex: 1;
+    font-size: 0.95rem;
+    padding: 7px 0;
+  }
+}
+.booking-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin: 32px 0 0 0;
+}
+@media (max-width: 900px) {
+  .booking-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .booking-card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+.booking-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  padding: 22px 18px 16px 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.booking-card:hover {
+  box-shadow: 0 6px 24px #0002;
+  transform: translateY(-2px) scale(1.02);
+}
+.booking-status-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 4px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  box-shadow: 0 1px 4px #0002;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+.booking-status-badge.accepted { background: #4caf50; }
+.booking-status-badge.rejected { background: #d32f2f; }
+.booking-status-badge.pending { background: #ff9800; }
+.booking-user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.booking-user-icon {
+  font-size: 28px;
+  margin-right: 12px;
+  color: #1976d2;
+}
+.booking-user-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+.booking-user-mobile {
+  color: #888;
+  font-size: 14px;
+}
+.booking-detail {
+  font-size: 15px;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  color: #444;
+}
+.booking-detail-icon {
+  margin-right: 6px;
+  color: #607d8b;
+}
+.booking-account-badge {
+  margin-bottom: 10px;
+}
+.booking-account-badge .account {
+  background: #eaf3e3;
+  color: #388e3c;
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+}
+.booking-account-badge .manual {
+  background: #fbe9e7;
+  color: #d84315;
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+}
+.booking-card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+.booking-card-btn {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.18s;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.booking-card-btn.accept { background: #4caf50; }
+.booking-card-btn.accept:disabled { background: #b7e1c6; cursor: not-allowed; }
+.booking-card-btn.reject { background: #ff9800; }
+.booking-card-btn.reject:disabled { background: #ffe0b2; color: #fff; cursor: not-allowed; }
+.booking-card-btn.delete { background: #d32f2f; }
+.booking-card-btn.delete:disabled { background: #f7bdbd; color: #fff; cursor: not-allowed; }
+.booking-card-date {
+  color: #888;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.manage-bookings-header {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2d3a4a;
+  margin: 0 0 24px 0;
+  padding: 32px 32px 0 32px;
+  letter-spacing: 0.5px;
+}
+.manage-bookings-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 0 0 32px 0;
+}
+.manage-bookings-error {
+  color: #d32f2f;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+.manage-bookings-loading, .manage-bookings-empty {
+  color: #888;
+  font-size: 1.1rem;
+  padding: 32px 0;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .manage-bookings-header {
+    font-size: 1.3rem;
+    padding: 24px 12px 0 12px;
+  }
+}
+@media (max-width: 600px) {
+  .manage-bookings-header {
+    font-size: 1.1rem;
+    padding: 18px 6px 0 6px;
+  }
+  .manage-bookings-container {
+    padding: 0 0 16px 0;
+  }
+} 

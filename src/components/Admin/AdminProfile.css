@@ -1,0 +1,181 @@
+.admin-profile-page {
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.edit-button, .save-button, .cancel-button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    background-color: #007bff;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.save-button {
+    background-color: #28a745;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    margin-left: 10px;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+.profile-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.profile-form input:disabled {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+}
+
+.profile-form h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+}
+
+.update-message {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-actions {
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+/* Last Login Information Styles */
+.last-login-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.last-login-section h3 {
+    color: white;
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    border: none;
+    padding: 0;
+}
+
+.login-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.login-info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.login-info-icon {
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.login-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.login-info-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.login-info-value {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .login-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .last-login-section {
+        padding: 1.2rem;
+    }
+    
+    .login-info-item {
+        padding: 0.9rem;
+    }
+} 

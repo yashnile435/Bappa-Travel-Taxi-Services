@@ -1,0 +1,25 @@
+@import './animations.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* CSS Variables for Loading Component */
+:root {
+  --bg-light: #f8f9fa;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --primary-color: #388e3c;
+  --gradient-primary: linear-gradient(90deg, #4caf50, #66bb6a, #81c784);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,312 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
+  color: var(--text-primary);
+  max-width: 600px;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.loading-logo {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-md);
+  animation: logo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.company-name {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(27, 94, 32, 0.1);
+}
+
+.loading-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* SVG Car Styling */
+.car-svg {
+  display: block;
+  width: 44px;
+  height: 22px;
+}
+
+/* Animated Car Styles */
+.loading-car {
+  position: absolute;
+  top: -14px;
+  z-index: 10;
+  transition: left 0.1s linear;
+}
+
+/* Soft shadow under the moving car */
+.loading-car::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 36px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.12) 40%, rgba(0,0,0,0) 70%);
+  transform: translateX(-50%);
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+/* Road-like bar container with glassy effect */
+.loading-bar-container {
+  width: 100%;
+  max-width: 400px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  overflow: visible;
+  margin: 0 auto 20px auto;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Glossy highlight */
+.loading-bar-container::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 1px;
+  height: 4px;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.loading-bar-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 8px,
+    rgba(255, 255, 255, 0.25) 8px,
+    rgba(255, 255, 255, 0.25) 16px
+  );
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.loading-bar {
+  height: 100%;
+  background: transparent;
+  border-radius: 8px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Animated gradient fill with shimmer */
+.loading-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #66bb6a, #81c784, #66bb6a, #4caf50);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+  transition: width 0.1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 200% 100%;
+  animation: bar-shimmer 1.6s linear infinite;
+}
+
+/* Rounded pill cap at the leading edge */
+.loading-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle at 40% 40%, #a5d6a7 0%, #66bb6a 45%, #43a047 70%, #2e7d32 100%);
+  box-shadow: 0 0 10px rgba(76,175,80,0.35);
+}
+
+@keyframes bar-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Existing styles below remain unchanged */
+
+.car-icon {
+  font-size: 24px;
+  color: var(--primary-color);
+  filter: drop-shadow(0 3px 6px rgba(56, 142, 60, 0.4)) 
+          drop-shadow(0 0 8px rgba(76, 175, 80, 0.3));
+  animation: car-bounce 0.6s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+@keyframes car-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+.car-trail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(76, 175, 80, 0.3) 30%, 
+    rgba(76, 175, 80, 0.6) 50%, 
+    rgba(76, 175, 80, 0.3) 70%, 
+    transparent 100%);
+  border-radius: 4px;
+  transform: translateX(-50%) translateY(-50%);
+  animation: trail-fade 0.8s ease-out infinite;
+  filter: blur(0.5px);
+}
+
+@keyframes trail-fade {
+  0% {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(-50%) scaleX(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scaleX(1.5);
+  }
+}
+
+.loading-progress {
+  font-size: 16px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Performance optimizations */
+.loading-container {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.loading-logo {
+  will-change: transform;
+}
+
+.loading-car {
+  will-change: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .loading-content {
+    padding: 30px 15px;
+    max-width: 100%;
+  }
+  
+  .loading-logo {
+    width: 140px;
+  }
+  
+  .company-name {
+    font-size: 24px;
+  }
+  
+  .loading-subtitle {
+    font-size: 16px;
+  }
+  
+  .loading-progress {
+    font-size: 14px;
+  }
+  
+  .car-icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-logo {
+    width: 120px;
+  }
+  
+  .company-name {
+    font-size: 20px;
+  }
+  
+  .loading-subtitle {
+    font-size: 14px;
+  }
+  
+  .car-icon {
+    font-size: 18px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .loading-logo {
+    animation: none;
+  }
+  
+  .loading-bar-fill {
+    transition: none;
+    animation: none;
+  }
+  
+  .car-icon {
+    animation: none;
+  }
+  
+  .car-trail {
+    animation: none;
+  }
+} 

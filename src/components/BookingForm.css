@@ -1,0 +1,361 @@
+/* Modern Booking Form Styles */
+.booking-modern-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e0f7fa 0%, #f8fff8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  margin-top: 27px; /* space below fixed navbar */
+}
+.booking-modern-container {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.booking-modern-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+  padding: 3rem 2.2rem 2.2rem 2.2rem;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.booking-modern-card:hover {
+  box-shadow: 0 12px 36px rgba(44,62,80,0.18);
+  transform: translateY(-2px) scale(1.01);
+}
+.booking-modern-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+.booking-modern-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+  object-fit: cover;
+}
+.booking-modern-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #388e3c;
+  margin: 0 0 0.2rem 0;
+  letter-spacing: 1px;
+}
+.booking-modern-header p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.08rem;
+  color: #4a7c59;
+  margin: 0;
+  font-weight: 500;
+}
+.booking-modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.booking-modern-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  font-weight: 800;
+}
+.booking-modern-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.booking-modern-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.booking-modern-field label {
+  font-weight: 700;
+  color: #388e3c;
+  font-size: 1.05rem;
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.2px;
+}
+.booking-modern-input-icon {
+  display: flex;
+  align-items: center;
+  background: #f6faf7;
+  border: 1.5px solid #bfc9d1;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  gap: 0.7rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.booking-modern-input-icon input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.08rem;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  font-weight: 500;
+}
+.booking-modern-input-icon svg {
+  color: #4a7c59;
+  font-size: 1.2rem;
+}
+.booking-modern-field select,
+.booking-modern-field input[type="date"],
+.booking-modern-field input[type="time"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #bfc9d1;
+  border-radius: 10px;
+  font-size: 1.08rem;
+  font-family: 'Poppins', sans-serif;
+  background: #f6faf7;
+  transition: border 0.2s, box-shadow 0.2s;
+  color: #222;
+  font-weight: 500;
+}
+.booking-modern-field select:focus,
+.booking-modern-field input[type="date"]:focus,
+.booking-modern-field input[type="time"]:focus {
+  border: 1.5px solid #388e3c;
+  box-shadow: 0 2px 8px rgba(74,124,89,0.08);
+  outline: none;
+}
+.booking-modern-row {
+  display: flex;
+  gap: 1.1rem;
+}
+.booking-modern-row .booking-modern-field {
+  flex: 1;
+}
+.booking-modern-btn {
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(90deg, #4a7c59 60%, #388e3c 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0.9rem;
+  box-shadow: 0 2px 8px #e0e0e0;
+  transition: background 0.3s, box-shadow 0.2s, transform 0.15s;
+}
+.booking-modern-btn:hover {
+  background: linear-gradient(90deg, #388e3c 60%, #4a7c59 100%);
+  box-shadow: 0 4px 16px #d0e6d6;
+  transform: translateY(-1px) scale(1.01);
+}
+.booking-modern-warning {
+  color: #c0392b;
+  font-size: 1.01rem;
+  margin-top: 0.7rem;
+  text-align: center;
+}
+/* Dialog Styles */
+.booking-modern-dialog-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.18);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.booking-modern-dialog {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 4px 32px rgba(44,62,80,0.18);
+  max-width: 420px;
+  width: 92%;
+  text-align: center;
+  position: relative;
+}
+.booking-modern-success-title {
+  color: #388e3c;
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.booking-modern-success-msg {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 12px;
+}
+.booking-modern-share-msg {
+  color: #555;
+  font-size: 1.01rem;
+  margin-bottom: 16px;
+}
+.booking-modern-share-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.booking-modern-whatsapp-btn {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.booking-modern-whatsapp-btn:hover {
+  background: #1ebe5d;
+}
+.booking-modern-secondary-btn {
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.booking-modern-secondary-btn:hover {
+  background: #2e6d2e;
+}
+.booking-modern-error-dialog {
+  box-shadow: 0 4px 32px rgba(244,67,54,0.18);
+}
+.booking-modern-error-title {
+  color: #c62828;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.booking-modern-error-msg {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+}
+.booking-location-input {
+  background: linear-gradient(90deg, #f8fafc 60%, #f1f8e9 100%);
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.booking-location-group {
+  position: relative;
+}
+.swap-locations-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid #c5e1a5;
+  background: #f1f8e9;
+  color: #388e3c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(56,142,60,0.15);
+}
+.swap-locations-button:hover {
+  background: #e8f5e9;
+}
+.swap-locations-button:active {
+  transform: translateY(-50%) scale(0.98);
+}
+.booking-location-input input {
+  font-size: 1.12rem;
+  color: #222;
+  background: transparent;
+  font-weight: 500;
+}
+.booking-location-input:focus-within {
+  border: 2px solid #00b894;
+  background: #f1f8e9;
+  box-shadow: 0 4px 16px #d0e6d6;
+}
+@media (max-width: 900px) {
+  .booking-modern-container {
+    max-width: 98vw;
+  }
+  .booking-modern-card {
+    max-width: 98vw;
+    padding: 2rem 0.7rem;
+  }
+}
+@media (max-width: 600px) {
+  .booking-modern-card {
+    padding: 1.1rem 0.2rem;
+    border-radius: 10px;
+    gap: 1.1rem;
+  }
+  .booking-modern-header h2 {
+    font-size: 1.25rem;
+  }
+  .booking-modern-header p {
+    font-size: 0.95rem;
+  }
+  .booking-modern-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+  }
+  .booking-modern-form h3 {
+    font-size: 1.1rem;
+  }
+  .booking-modern-btn {
+    font-size: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  .booking-modern-field label {
+    font-size: 0.97rem;
+  }
+  .booking-modern-input-icon input,
+  .booking-modern-field select,
+  .booking-modern-field input[type="date"],
+  .booking-modern-field input[type="time"] {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 7px;
+  }
+  .booking-location-input {
+    padding: 0.6rem 0.7rem;
+    border-radius: 7px;
+  }
+  .booking-modern-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+} 
