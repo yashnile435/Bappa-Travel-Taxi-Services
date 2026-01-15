@@ -237,7 +237,7 @@
   background: #f8f9fa;
   border-radius: 10px;
   padding: 5px 15px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
 }
 
@@ -251,7 +251,7 @@
 .input-icon {
   font-size: 18px;
   color: #888;
-  transition: color 0.3s;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-right: 10px;
 }
 
@@ -285,7 +285,7 @@
   cursor: pointer;
   padding: 8px;
   font-size: 18px;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
 }
 
@@ -345,7 +345,7 @@
 
 .signup-button-icon {
   font-size: 18px;
-  transition: transform 0.3s;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .signup-button:hover .signup-button-icon {

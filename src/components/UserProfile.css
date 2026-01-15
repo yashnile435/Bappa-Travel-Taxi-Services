@@ -96,7 +96,7 @@
   font-size: 1rem;
   background: #f9fafb;
   font-family: 'Poppins', sans-serif;
-  transition: border 0.2s;
+  transition: border 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-input:focus {
@@ -151,11 +151,13 @@
   font-size: 1.08rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px #e0e0e0;
 }
 .profile-update-btn:hover {
   background: #145a32;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 142, 60, 0.3);
 }
 
 @media (max-width: 700px) {

@@ -19,7 +19,32 @@ body {
   --text-primary: #333;
   --text-secondary: #666;
   --primary-color: #388e3c;
+  --secondary-color: #4caf50;
+  --accent-color: #66bb6a;
   --gradient-primary: linear-gradient(90deg, #4caf50, #66bb6a, #81c784);
+  --gradient-light: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Smooth Transition Variables */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Global smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}
+
+/* GPU Acceleration for better performance */
+*,
+*::before,
+*::after {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
