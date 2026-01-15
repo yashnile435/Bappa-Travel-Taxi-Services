@@ -149,6 +149,34 @@ function buildUserEmailHTML(kind, data, extra) {
   return buildWrapper({ title, intro, bodyHtml });
 }
 
+function buildFeedbackEmailHTML({ name, email, message, rating }) {
+  const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  const title = 'New Feedback Received';
+  const intro = `You have received a new feedback from <strong>${name}</strong>.`;
+  
+  const bodyHtml = `
+    <div style="background: #fff; border: 1px solid ${BRAND.border}; border-radius: 12px; padding: 16px;">
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 11px; text-transform: uppercase; color: ${BRAND.muted}; margin-bottom: 4px;">Rating</div>
+        <div style="font-size: 18px; color: #ffc107;">${stars}</div>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 11px; text-transform: uppercase; color: ${BRAND.muted}; margin-bottom: 4px;">From</div>
+        <div style="font-size: 15px; color: ${BRAND.text};"><strong>${name}</strong> (${email})</div>
+      </div>
+      <div>
+        <div style="font-size: 11px; text-transform: uppercase; color: ${BRAND.muted}; margin-bottom: 4px;">Message</div>
+        <div style="font-size: 15px; color: ${BRAND.text}; line-height: 1.5;">${message}</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px;">
+      <a href="mailto:${email}" style="display: inline-block; padding: 10px 20px; background: ${BRAND.primary}; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600;">Reply to User</a>
+    </div>
+  `;
+
+  return buildWrapper({ title, intro, bodyHtml, footerNote: 'Feedback Notification' });
+}
+
 exports.sendEmail = functions
   .region('us-central1')
   .https.onRequest(async (req, res) => {
@@ -202,27 +230,6 @@ exports.sendEmail = functions
           dropoffLocation
         })
       };
-
-      const adminMobile = '9011333966';
-      const userBaseHtml = `
-        <div style="font-family: Arial, sans-serif; max-width: 520px; margin: auto;">
-          <div style="margin-bottom: 12px; font-size: 16px;">Dear <strong>${fullName}</strong>,</div>
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="font-weight: bold; padding: 6px; border-bottom: 1px solid #eee;">Car:</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${selectedCar || ''}</td></tr>
-            <tr><td style="font-weight: bold; padding: 6px; border-bottom: 1px solid #eee;">Date:</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${pickupDate || ''}</td></tr>
-            <tr><td style="font-weight: bold; padding: 6px; border-bottom: 1px solid #eee;">Time:</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${pickupTime || ''}</td></tr>
-            <tr><td style="font-weight: bold; padding: 6px; border-bottom: 1px solid #eee;">Pickup:</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${pickupLocation || ''}</td></tr>
-            <tr><td style="font-weight: bold; padding: 6px; border-bottom: 1px solid #eee;">Drop-off:</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${dropoffLocation || ''}</td></tr>
-          </table>
-          <div style="margin-top: 18px; padding: 14px 16px; border: 1px solid #1976d2; border-radius: 10px; background: #f4f8fd;">
-            <div style="margin: 0 0 8px 0; color: #1976d2; font-size: 16px; font-weight: 600;">Bappa Travels Business Card</div>
-            <div style="font-size: 14px; color: #222; margin-bottom: 4px;"><strong>Propriter:</strong> Anil Lohar</div>
-            <div style="font-size: 14px; color: #222; margin-bottom: 4px;"><strong>Contact:</strong> ${adminMobile}</div>
-            <div style="font-size: 14px; color: #222; margin-bottom: 4px;"><strong>Email:</strong> travels.bappa15@gmail.com</div>
-          </div>
-          <div style="font-size: 13px; color: #888; margin-top: 12px;">Bappa Travels Team</div>
-        </div>
-      `;
 
       try {
         if (status) {
@@ -293,4 +300,48 @@ exports.sendEmail = functions
         return res.status(500).json({ message: 'Failed to send emails', error: String(err) });
       }
     });
-  }); 
+  });
+
+exports.sendFeedback = functions
+  .region('us-central1')
+  .https.onRequest(async (req, res) => {
+    return cors(req, res, async () => {
+      if (req.method === 'OPTIONS') {
+        return res.status(204).send('');
+      }
+      if (req.method !== 'POST') {
+        return res.status(405).json({ message: 'Method not allowed' });
+      }
+
+      const { name, email, message, rating } = req.body || {};
+
+      if (!name || !email || !message || !rating) {
+        return res.status(400).json({ message: 'Missing required fields' });
+      }
+
+      const { smtpUser, smtpPass, smtpFrom } = getConfig();
+      if (!smtpUser || !smtpPass) {
+        return res.status(500).json({ message: 'SMTP credentials are not configured' });
+      }
+
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: { user: smtpUser, pass: smtpPass }
+      });
+
+      const mailOptions = {
+        from: smtpFrom,
+        to: 'support@bappatravels.com', // As requested
+        subject: `New Feedback from ${name} - Bappa Travels`,
+        html: buildFeedbackEmailHTML({ name, email, message, rating })
+      };
+
+      try {
+        await transporter.sendMail(mailOptions);
+        return res.status(200).json({ message: 'Feedback email sent successfully' });
+      } catch (err) {
+        console.error('Error sending feedback email:', err);
+        return res.status(500).json({ message: 'Failed to send email', error: String(err) });
+      }
+    });
+  });

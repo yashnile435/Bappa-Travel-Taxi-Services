@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './AdminNavbar.css';
-import { FaTachometerAlt, FaUsers, FaCar, FaCalendarCheck, FaUserCircle, FaSignOutAlt, FaBars, FaTimes, FaFileInvoice } from 'react-icons/fa';
+import { FaTachometerAlt, FaUsers, FaCar, FaCalendarCheck, FaUserCircle, FaSignOutAlt, FaBars, FaTimes, FaFileInvoice, FaCommentDots } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
 import { db } from '../../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -121,6 +121,9 @@ const AdminNavbar = () => {
                 </NavLink>
                 <NavLink to="/admin/profile" className="admin-nav-link" onClick={closeMenu}>
                     <FaUserCircle /> <span>Profile</span>
+                </NavLink>
+                <NavLink to="/admin/feedback" className="admin-nav-link" onClick={closeMenu}>
+                    <FaCommentDots /> <span>Feedback</span>
                 </NavLink>
                 <button className="admin-logout-btn" onClick={handleLogout}>
                     <FaSignOutAlt />

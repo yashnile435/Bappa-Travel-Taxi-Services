@@ -22,11 +22,13 @@ const AdminProfile = lazy(() => import("./components/Admin/AdminProfile"));
 const ManageCars = lazy(() => import("./components/Admin/ManageCars"));
 const ManageUsers = lazy(() => import("./components/Admin/ManageUsers"));
 const ManageBookings = lazy(() => import("./components/Admin/ManageBookings"));
+const AdminFeedback = lazy(() => import("./components/Admin/AdminFeedback"));
 const BillGeneration = lazy(() => import("./components/Admin/BillGeneration"));
 const BookingForm = lazy(() => import("./components/BookingForm"));
 const UserProfile = lazy(() => import("./components/UserProfile"));
 const UserBookings = lazy(() => import("./components/UserBookings"));
 const ChangePassword = lazy(() => import("./components/Admin/ChangePassword"));
+const Feedback = lazy(() => import("./components/Feedback"));
 
 const ProtectedRoute = ({ children }) => {
   const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn");
@@ -132,12 +134,14 @@ function App() {
         <Route path="/admin/manage-cars" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><ManageCars /></Suspense></ProtectedRoute>} />
         <Route path="/admin/manage-users" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><ManageUsers /></Suspense></ProtectedRoute>} />
         <Route path="/admin/manage-bookings" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><ManageBookings /></Suspense></ProtectedRoute>} />
+        <Route path="/admin/feedback" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><AdminFeedback /></Suspense></ProtectedRoute>} />
         <Route path="/admin/bill-generation" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><BillGeneration /></Suspense></ProtectedRoute>} />
         <Route path="/book-car" element={<Suspense fallback={<MinimalLoading />}><BookingForm /></Suspense>} />
         <Route path="/profile" element={<Suspense fallback={<MinimalLoading />}><UserProfile /></Suspense>} />
         <Route path="/bookings" element={<Suspense fallback={<MinimalLoading />}><UserBookings /></Suspense>} />
         <Route path="/my-bookings" element={<Suspense fallback={<MinimalLoading />}><UserBookings /></Suspense>} />
         <Route path="/admin/change-password" element={<ProtectedRoute><Suspense fallback={<MinimalLoading />}><ChangePassword /></Suspense></ProtectedRoute>} />
+        <Route path="/feedback" element={<Suspense fallback={<MinimalLoading />}><Feedback /></Suspense>} />
       </Routes>
     </Router>
   );

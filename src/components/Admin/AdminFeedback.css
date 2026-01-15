@@ -1,0 +1,107 @@
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.feedback-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.feedback-user-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.feedback-user-info span {
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+}
+
+.feedback-rating {
+  color: #ffc107;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.feedback-message {
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+  font-size: 0.95rem;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.feedback-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.delete-feedback-btn {
+  background: #ffebee;
+  color: #d32f2f;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.delete-feedback-btn:hover {
+  background: #ffcdd2;
+}
+
+.no-feedback {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+}
+
+.loading-feedback {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  width: 100%;
+}

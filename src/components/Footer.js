@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaWhatsapp, FaDownload, FaClock, FaHome, FaInfoCircle, FaCar } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaWhatsapp, FaDownload, FaClock, FaHome, FaInfoCircle, FaCar, FaComment } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -12,6 +13,7 @@ const Footer = () => {
             <a href="#home" className="footer-link"><FaHome className="footer-link-icon" /> Home</a>
             <a href="#about" className="footer-link"><FaInfoCircle className="footer-link-icon" /> About Us</a>
             <a href="#cars" className="footer-link"><FaCar className="footer-link-icon" /> Our Fleet</a>
+            <Link to="/feedback" className="footer-link"><FaComment className="footer-link-icon" /> Feedback</Link>
             <a href="#contact" className="footer-link"><FaEnvelope className="footer-link-icon" /> Contact</a>
             <a href="https://www.facebook.com/people/Bappa-Travels/pfbid02D2LqJckwbNtF9e8HuAWeHmKS2NJpxim3i22geYnWwsmKfGSj8FTEU6Ph9r4Qxs2ml/" target="_blank" rel="noopener noreferrer" className="footer-link"><FaFacebookF className="footer-link-icon" /> Facebook</a>
             <a href="https://wa.me/919011333966" target="_blank" rel="noopener noreferrer" className="footer-link"><FaWhatsapp className="footer-link-icon" /> WhatsApp</a>
