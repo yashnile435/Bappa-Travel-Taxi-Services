@@ -271,6 +271,8 @@
 .booking-status-badge.accepted { background: #4caf50; }
 .booking-status-badge.rejected { background: #d32f2f; }
 .booking-status-badge.pending { background: #ff9800; }
+.booking-status-badge.completed { background: #1976d2; }
+
 .booking-user-info {
   display: flex;
   align-items: center;
@@ -348,6 +350,8 @@
 .booking-card-btn.accept:disabled { background: #b7e1c6; cursor: not-allowed; }
 .booking-card-btn.reject { background: #ff9800; }
 .booking-card-btn.reject:disabled { background: #ffe0b2; color: #fff; cursor: not-allowed; }
+.booking-card-btn.complete { background: #1976d2; }
+.booking-card-btn.complete:disabled { background: #bbdefb; color: #fff; cursor: not-allowed; }
 .booking-card-btn.delete { background: #d32f2f; }
 .booking-card-btn.delete:disabled { background: #f7bdbd; color: #fff; cursor: not-allowed; }
 .booking-card-date {

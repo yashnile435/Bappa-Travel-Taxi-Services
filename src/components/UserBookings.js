@@ -130,37 +130,39 @@ const UserBookings = () => {
                           textAlign: 'center',
                           display: 'inline-block',
                         }}>{booking.status ? booking.status.charAt(0).toUpperCase() + booking.status.slice(1) : 'Pending'}</span>
-                        <button
-                          onClick={() => setDeleteConfirm({ id: booking.id, carName: booking.selectedCar || booking.carName })}
-                          style={{
-                            background: '#ffebee',
-                            color: '#d32f2f',
-                            border: '1px solid #ffcdd2',
-                            borderRadius: 8,
-                            padding: '8px 12px',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 6,
-                            fontSize: 14,
-                            fontWeight: 600,
-                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.target.style.background = '#d32f2f';
-                            e.target.style.color = '#fff';
-                            e.target.style.transform = 'translateY(-2px)';
-                            e.target.style.boxShadow = '0 4px 12px rgba(211, 47, 47, 0.3)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.target.style.background = '#ffebee';
-                            e.target.style.color = '#d32f2f';
-                            e.target.style.transform = 'translateY(0)';
-                            e.target.style.boxShadow = 'none';
-                          }}
-                        >
-                          <FaTrashAlt /> Delete
-                        </button>
+                        {booking.status !== 'completed' && (
+                          <button
+                            onClick={() => setDeleteConfirm({ id: booking.id, carName: booking.selectedCar || booking.carName })}
+                            style={{
+                              background: '#ffebee',
+                              color: '#d32f2f',
+                              border: '1px solid #ffcdd2',
+                              borderRadius: 8,
+                              padding: '8px 12px',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 6,
+                              fontSize: 14,
+                              fontWeight: 600,
+                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.background = '#d32f2f';
+                              e.target.style.color = '#fff';
+                              e.target.style.transform = 'translateY(-2px)';
+                              e.target.style.boxShadow = '0 4px 12px rgba(211, 47, 47, 0.3)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.background = '#ffebee';
+                              e.target.style.color = '#d32f2f';
+                              e.target.style.transform = 'translateY(0)';
+                              e.target.style.boxShadow = 'none';
+                            }}
+                          >
+                            <FaTrashAlt /> Delete
+                          </button>
+                        )}
                       </div>
                     </div>
                     <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '0 0 1rem 0' }} />

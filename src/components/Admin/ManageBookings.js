@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AdminNavbar from './AdminNavbar';
 import { db } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import { FaCar, FaUser, FaMapMarkerAlt, FaCalendarAlt, FaCheck, FaTimes, FaUserCheck, FaRegEdit, FaQuestionCircle } from 'react-icons/fa';
+import { FaCar, FaUser, FaMapMarkerAlt, FaCalendarAlt, FaCheck, FaTimes, FaUserCheck, FaRegEdit, FaQuestionCircle, FaCheckCircle } from 'react-icons/fa';
 import './ManageUsers.css';
 import ReactModal from 'react-modal';
 
@@ -58,6 +58,8 @@ const ManageBookings = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [deleteBooking, setDeleteBooking] = useState(null);
+  const [showCompleteDialog, setShowCompleteDialog] = useState(false);
+  const [completeBooking, setCompleteBooking] = useState(null);
 
   // Move fetchBookings outside useEffect
   const fetchBookings = async () => {
@@ -116,6 +118,8 @@ const ManageBookings = () => {
       setRejectBooking(null);
       setShowAcceptDialog(false);
       setAcceptBooking(null);
+      setShowCompleteDialog(false);
+      setCompleteBooking(null);
     } catch (err) {
       setErrorMessage('Failed to update booking status. Please try again.');
     } finally {
@@ -137,6 +141,11 @@ const ManageBookings = () => {
   const handleDeleteClick = (booking) => {
     setDeleteBooking(booking);
     setShowDeleteDialog(true);
+  };
+
+  const handleCompleteClick = (booking) => {
+    setCompleteBooking(booking);
+    setShowCompleteDialog(true);
   };
 
   const handleDeleteBooking = async () => {
@@ -213,13 +222,23 @@ const ManageBookings = () => {
                       <FaTimes /> Reject
                     </button>
                     <button
-                      className="booking-card-btn delete"
-                      title="Delete Booking"
-                      onClick={() => handleDeleteClick(booking)}
-                      disabled={updating === booking.id + 'delete'}
+                      className="booking-card-btn complete"
+                      title="Mark as Completed"
+                      onClick={() => handleCompleteClick(booking)}
+                      disabled={updating === booking.id + 'completed' || booking.status === 'completed'}
                     >
-                      Delete
+                      <FaCheckCircle /> Complete
                     </button>
+                    {booking.status !== 'completed' && (
+                      <button
+                        className="booking-card-btn delete"
+                        title="Delete Booking"
+                        onClick={() => handleDeleteClick(booking)}
+                        disabled={updating === booking.id + 'delete'}
+                      >
+                        Delete
+                      </button>
+                    )}
                   </div>
                   {/* Booked date */}
                   <div className="booking-card-date">
@@ -337,6 +356,48 @@ const ManageBookings = () => {
             <button
               onClick={() => setShowDeleteDialog(false)}
               style={{ background: '#607d8b', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 24px', fontWeight: 600, fontSize: 15, cursor: 'pointer' }}
+            >
+              Cancel
+            </button>
+          </div>
+        </ReactModal>
+        <ReactModal
+          isOpen={showCompleteDialog}
+          onRequestClose={() => setShowCompleteDialog(false)}
+          contentLabel="Complete Booking Confirmation"
+          style={{
+            overlay: { backgroundColor: 'rgba(0,0,0,0.3)', zIndex: 2000 },
+            content: {
+              maxWidth: 420,
+              margin: 'auto',
+              borderRadius: 12,
+              padding: 18,
+              textAlign: 'center',
+              height: 360,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }
+          }}
+          ariaHideApp={false}
+        >
+          <FaCheckCircle size={70} color="#1976d2" style={{ marginBottom: 18 }} />
+          <h2 style={{ marginBottom: 12, fontWeight: 700, fontSize: 28, color: '#444' }}>Confirm Completion</h2>
+          <div style={{ fontSize: 18, marginBottom: 32, color: '#444' }}>
+            Are you sure you want to mark this booking as completed?
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 18 }}>
+            <button
+              onClick={() => {
+                handleStatus(completeBooking.id, 'completed', completeBooking.mobileNumber, completeBooking);
+              }}
+              style={{ background: '#1976d2', color: '#fff', border: 'none', borderRadius: 8, padding: '10px 28px', fontWeight: 600, fontSize: 17, cursor: 'pointer', boxShadow: '0 2px 6px #0001' }}
+            >
+              Yes, Complete it!
+            </button>
+            <button
+              onClick={() => setShowCompleteDialog(false)}
+              style={{ background: '#607d8b', color: '#fff', border: 'none', borderRadius: 8, padding: '10px 28px', fontWeight: 600, fontSize: 17, cursor: 'pointer' }}
             >
               Cancel
             </button>
